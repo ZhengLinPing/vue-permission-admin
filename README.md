@@ -16,7 +16,6 @@ vue-permission-admin 是一个后台前端权限管理解决方案，最大特�
 
 
 
-mongoexport -h localhost:27017 -d koa  -o output E:/db.json
 
 ## 功能
 
