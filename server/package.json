@@ -1,0 +1,36 @@
+{
+  "name": "koa-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node bin/www --exec babel-node",
+    "dev": "./node_modules/.bin/nodemon bin/www --exec babel-node",
+    "prd": "pm2 start bin/www --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "debug": "^4.1.1",
+    "ejs": "~2.3.3",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-generic-session": "^2.0.1",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.0",
+    "koa-onerror": "^4.1.0",
+    "koa-passport": "^4.1.3",
+    "koa-redis": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.2.0",
+    "mongoose": "^5.6.9",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
