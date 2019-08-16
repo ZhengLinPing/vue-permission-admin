@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-button class="filter-item" style="margin-left: 10px;" type="success" icon="el-icon-edit" @click="handleAdd">
+      <el-button class="filter-item" style="margin-left: 10px;" type="success" icon="el-icon-edit" @click="handleAdd" v-permission="['add']">
         添加角色
       </el-button>
     </div>
@@ -61,8 +61,9 @@
 
       <el-table-column label="操作" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button type="success" icon="el-icon-edit" size="mini" @click="handleUpdate(scope.row)">编辑</el-button>
+          <el-button type="success" icon="el-icon-edit" size="mini" @click="handleUpdate(scope.row)" v-permission="['edit']">编辑</el-button>
           <el-button
+            v-permission="['delete']"
             v-if="scope.row.status!='deleted'"
             icon="el-icon-delete"
             size="mini"
