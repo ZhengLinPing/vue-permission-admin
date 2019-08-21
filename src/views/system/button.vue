@@ -23,7 +23,7 @@
 
       <el-table-column label="按钮名称" width="200px" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.name }}</span>
+          <el-button size="medium" type="primary"> {{ scope.row.name }}</el-button>
         </template>
       </el-table-column>
 
@@ -65,7 +65,7 @@
       @pagination="getList"
     />
 
-    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" width="650px">
+    <el-dialog :close-on-click-modal="false" :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" width="650px">
       <el-form
         ref="userForm"
         :rules="rules"
