@@ -103,3 +103,39 @@ export function removePermission(data) {
     data
   })
 }
+
+/**
+ * 按钮配置
+ * **/
+
+export function getButton(data) {
+  return request({
+    url: `/button/list`,
+    method: 'post',
+    data
+  })
+}
+
+export function addButton(data) {
+  return request({
+    url: `/button/add`,
+    method: 'post',
+    data
+  })
+}
+
+export function updateButton(data) {
+  return request({
+    url: `/button/update`,
+    method: 'post',
+    data
+  })
+}
+
+export function removeButton(data) {
+  return request({
+    url: `/button/remove`,
+    method: 'post',
+    data
+  })
+}

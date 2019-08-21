@@ -14,7 +14,7 @@
         </el-form-item>
         <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">搜索</el-button>
         <el-button v-waves class="filter-item" @click="resetForm('filterFrom');handleFilter()">重置</el-button>
-        <el-button class="filter-item" style="margin-left: 10px;" type="success" icon="el-icon-edit" @click="handleAdd" v-permission="['add']">
+        <el-button v-permission="['add']" class="filter-item" style="margin-left: 10px;" type="success" icon="el-icon-edit" @click="handleAdd">
           添加
         </el-button>
       </el-form>
@@ -67,10 +67,10 @@
       </el-table-column>
       <el-table-column label="操作" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button type="success" icon="el-icon-edit" size="mini" @click="handleUpdate(scope.row)" v-permission="['edit']">编辑</el-button>
+          <el-button v-permission="['edit']" type="success" icon="el-icon-edit" size="mini" @click="handleUpdate(scope.row)">编辑</el-button>
           <el-button
-            v-permission="['delete']"
             v-if="scope.row.status!='deleted'"
+            v-permission="['delete']"
             icon="el-icon-delete"
             size="mini"
             type="danger"

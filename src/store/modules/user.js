@@ -1,6 +1,8 @@
 import { login, logout, getInfo } from '@/api/user'
+import { getButton } from '@/api/system'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
+import store from '../index'
 
 const state = {
   token: getToken(),
@@ -8,7 +10,8 @@ const state = {
   avatar: '',
   introduction: '',
   roles: [],
-  permissions: []
+  permissions: [],
+  buttons: {}
 }
 
 const mutations = {
@@ -29,6 +32,9 @@ const mutations = {
   },
   SET_PERMISSIONS: (state, permissions) => {
     state.permissions = permissions
+  },
+  SET_BUTTON: (state, buttons) => {
+    state.buttons = buttons
   }
 }
 
@@ -50,6 +56,7 @@ const actions = {
 
   // get user info
   getInfo({ commit, state }) {
+    store.dispatch('user/getButton')
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
@@ -71,6 +78,26 @@ const actions = {
         commit('SET_AVATAR', avatar)
         commit('SET_INTRODUCTION', introduction)
         resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+
+  getButton({ commit, state }) {
+    return new Promise((resolve, reject) => {
+      getButton({
+        page_no: 1,
+        page_size: 20
+      }).then((res) => {
+        const data = res.data.items
+        const btn = {}
+        data.forEach(item => {
+          btn[item.code] = item.name
+        })
+
+        commit('SET_BUTTON', btn)
+        resolve(btn)
       }).catch(error => {
         reject(error)
       })

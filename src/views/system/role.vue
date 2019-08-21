@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-button class="filter-item" style="margin-left: 10px;" type="success" icon="el-icon-edit" @click="handleAdd" v-permission="['add']">
+      <el-button v-permission="['add']" class="filter-item" style="margin-left: 10px;" type="success" icon="el-icon-edit" @click="handleAdd">
         添加角色
       </el-button>
     </div>
@@ -61,10 +61,10 @@
 
       <el-table-column label="操作" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button type="success" icon="el-icon-edit" size="mini" @click="handleUpdate(scope.row)" v-permission="['edit']">编辑</el-button>
+          <el-button type="success" icon="el-icon-edit" size="mini" @click="handleUpdate(scope.row)">编辑</el-button>
           <el-button
-            v-permission="['delete']"
             v-if="scope.row.status!='deleted'"
+            v-permission="['delete']"
             icon="el-icon-delete"
             size="mini"
             type="danger"
@@ -84,7 +84,7 @@
       @pagination="getList"
     />
 
-    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" >
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
 
       <el-form
         ref="userForm"
@@ -144,7 +144,6 @@
 import { getRole, addRole, updateRole, removeRole, getPermission } from '@/api/system'
 import waves from '@/directive/waves' // Waves directive
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
-import { permissionOption } from '@/utils/dict'
 
 export default {
   name: 'Role',
@@ -162,7 +161,7 @@ export default {
   },
   data() {
     return {
-      permissionOption: permissionOption,
+      permissionOption: this.$store.getters.buttons,
       tableKey: 0,
       list: [],
       permissionList: [],

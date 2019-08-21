@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="filter-container">
       <el-button v-permission="['add']" class="filter-item" style="margin-left: 10px;" type="success" icon="el-icon-edit" @click="handleAdd">
-        添加权限
+        添加按钮
       </el-button>
     </div>
 
@@ -17,23 +17,19 @@
     >
       <el-table-column label="唯一识别码" width="200px" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.code }}</span>
+          <span style="color:#999">{{ scope.row.code }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="权限名称" width="200px" align="center">
+      <el-table-column label="按钮名称" width="200px" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="可操作权限" align="center">
-        <template slot-scope="scope">
-          <el-tag v-for="v of scope.row.permission " :key="v" type="success" style="margin:5px">
-            {{ permissionOption[v] }}
-          </el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="状态" width="200px" align="center">
+
+      <el-table-column label="按钮描述" prop="desc" align="center" />
+
+      <!-- <el-table-column label="状态" width="200px" align="center">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.state"
@@ -42,7 +38,7 @@
           />
 
         </template>
-      </el-table-column>
+      </el-table-column>-->
 
       <el-table-column label="操作" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -83,23 +79,11 @@
         <el-form-item label="权限名称" prop="name">
           <el-input v-model="temp.name" />
         </el-form-item>
-        <el-form-item label="状态" prop="state">
+        <!-- <el-form-item label="状态" prop="state">
           <el-switch v-model="temp.state" active-color="#13ce66" />
-        </el-form-item>
+        </el-form-item>-->
         <el-form-item label="描述" prop="desc">
           <el-input v-model="temp.desc" type="textarea" />
-        </el-form-item>
-        <el-form-item label="赋予权限" prop="permission">
-
-          <el-select v-model="temp.permission" multiple placeholder="请选择" style="width:100%">
-            <el-option
-              v-for="(val,key) in permissionOption"
-              :key="key"
-              :label="val"
-              :value="key"
-            />
-          </el-select>
-
         </el-form-item>
 
       </el-form>
@@ -113,13 +97,13 @@
 </template>
 
 <script>
-import { getPermission, addPermission, updatePermission, removePermission } from '@/api/system'
+import { getButton, addButton, updateButton, removeButton } from '@/api/system'
 import waves from '@/directive/waves' // Waves directive
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
-// import { permissionOption } from '@/utils/dict'
+import { permissionOption } from '@/utils/dict'
 
 export default {
-  name: 'Permission',
+  name: 'Button',
   components: { Pagination },
   directives: { waves },
   filters: {
@@ -134,7 +118,7 @@ export default {
   },
   data() {
     return {
-      permissionOption: this.$store.getters.buttons,
+      permissionOption: permissionOption,
       tableKey: 0,
       list: [],
       total: 0,
@@ -172,10 +156,9 @@ export default {
     this.getList()
   },
   methods: {
-
     getList() {
       this.listLoading = true
-      getPermission(this.listQuery).then(res => {
+      getButton(this.listQuery).then(res => {
         this.list = res.data.items
         this.total = res.data.total
         this.listLoading = false
@@ -186,7 +169,7 @@ export default {
       this.getList()
     },
     handleModifyState(index, row) {
-      updatePermission({
+      updateButton({
         '_id': row._id,
         'state': row.state
       }).then((res) => {
@@ -216,7 +199,7 @@ export default {
       this.$refs['userForm'].validate((valid) => {
         if (valid) {
           // const tempData = Object.assign({}, this.temp)
-          addPermission(this.temp).then((res) => {
+          addButton(this.temp).then((res) => {
             this.list.push(res.data)
             this.dialogFormVisible = false
             this.$notify({
@@ -240,7 +223,7 @@ export default {
     updateData() {
       this.$refs['userForm'].validate((valid) => {
         if (valid) {
-          updatePermission(this.temp).then(() => {
+          updateButton(this.temp).then(() => {
             for (const v of this.list) {
               if (v._id === this.temp._id) {
                 const index = this.list.indexOf(v)
@@ -265,7 +248,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        removePermission({ '_id': row._id }).then(() => {
+        removeButton({ '_id': row._id }).then(() => {
           this.$notify({
             title: '成功',
             message: '删除成功',

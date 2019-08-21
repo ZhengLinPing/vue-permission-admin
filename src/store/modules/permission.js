@@ -26,11 +26,11 @@ export function filterAsyncRoutes(routes, roles) {
     if (tmp.children) {
       tmp.children = filterAsyncRoutes(tmp.children, roles)
     }
-    const hasPermission = roles.find(item => item.code === tmp.name && item.selected.length)
+    const hasPermission = roles.find(item => item.code === tmp.name && item.selected.length) || false
 
     if (tmp.children && tmp.children.length || hasPermission) {
       try {
-        tmp.meta.btnPermissions = hasPermission.selected
+        tmp.meta.btnPermissions = [].concat(hasPermission.selected)
       } catch (e) {
         console.log(e)
       }

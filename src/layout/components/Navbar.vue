@@ -27,7 +27,7 @@
           <router-link to="/profile/index">
             <el-dropdown-item>Profile</el-dropdown-item>
           </router-link>
-        <!--  <router-link to="/profile/index">
+          <!--  <router-link to="/profile/index">
             <el-dropdown-item>Profile</el-dropdown-item>
           </router-link>
           <router-link to="/">

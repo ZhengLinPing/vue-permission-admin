@@ -119,7 +119,7 @@ export const asyncRoutes = [
           title: '测试页面',
           roles: ['admin']
         }
-      } ,
+      },
       {
         path: 'user',
         component: () => import('@/views/system/user'),
@@ -144,6 +144,15 @@ export const asyncRoutes = [
         name: 'permission',
         meta: {
           title: '权限列表',
+          roles: ['admin']
+        }
+      },
+      {
+        path: 'button',
+        component: () => import('@/views/system/button'),
+        name: 'button',
+        meta: {
+          title: '按钮配置',
           roles: ['admin']
         }
       }

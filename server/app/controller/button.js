@@ -1,11 +1,11 @@
-import Permission from '../dbs/models/permission'
+import Button from '../dbs/models/button'
 
-let permission = {
+let controller = {
 
     add:async (ctx,next) =>{
       let {body:param,body:{code}} = ctx.request
 
-        let result = await Permission.findOne({code})
+        let result = await Button.findOne({code})
         if (result){
           ctx.body={
             code:-1,
@@ -14,13 +14,13 @@ let permission = {
           return false
         }
 
-        let newPermission = await Permission.create(param)
+        let newButton = await Button.create(param)
 
-      if (newPermission){
+      if (newButton){
           ctx.body = {
             code:0,
             msg:'添加成功',
-            data:newPermission
+            data:newButton
           }
         }else{
             ctx.body = {
@@ -33,9 +33,9 @@ let permission = {
 
   update:async (ctx,next) =>{
     let {body:param,body:{_id}} = ctx.request
-    let upPermission = await  Permission.findOneAndUpdate({_id},param)
-    console.log(upPermission)
-    if (upPermission){
+    let upButton = await  Button.findOneAndUpdate({_id},param)
+    console.log(upButton)
+    if (upButton){
       ctx.body = {
         code:0,
         msg:'更新成功',
@@ -50,7 +50,7 @@ let permission = {
 
   remove:async (ctx,next) =>{
     let {body:param,body:{_id}} = ctx.request
-    let result = await  Permission.deleteOne({_id})
+    let result = await  Button.deleteOne({_id})
 
     if (result.deletedCount===1){
       ctx.body = {
@@ -71,8 +71,8 @@ let permission = {
       page_size,
     }=ctx.request.body;
     try {
-      let result = await Permission.find().skip((page_no-1)*page_size).limit(page_size).sort({timestamp:1})
-      let total = await Permission.countDocuments()
+      let result = await Button.find().skip((page_no-1)*page_size).limit(page_size).sort({timestamp:1})
+      let total = await Button.countDocuments()
       ctx.body={
         code:0,
         data:{
@@ -93,4 +93,4 @@ let permission = {
 
 }
 
-export default permission
+export default controller
