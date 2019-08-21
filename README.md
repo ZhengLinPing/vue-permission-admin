@@ -47,13 +47,16 @@ vue-permission-admin 是一个后台前端权限管理解决方案，最大特�
 
 ```bash
 # 克隆项目
-git clone https://github.com/PanJiaChen/vue-element-admin.git
+git clone https://github.com/ZhengLinPing/vue-permission-admin.git
 
 # 进入项目目录
-cd woniu-woniu-permission
+cd vue-permission-admin
 
 # 安装依赖
 npm install
+
+# 导入数据
+/dbs/的数据导入数据库
 
 # 建议不要直接使用 cnpm 安装依赖，会有各种诡异的 bug。可以通过如下操作解决 npm 下载速度慢的问题
 npm install --registry=https://registry.npm.taobao.org
