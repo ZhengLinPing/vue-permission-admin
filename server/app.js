@@ -38,7 +38,8 @@ app.use(json())
 
 mongoose.connect(dbConfig.dbs, {
   useCreateIndex: true,
-  useNewUrlParser:true
+  useNewUrlParser:true,
+  useFindAndModify:false
 })
 
 app.use(passport.initialize())

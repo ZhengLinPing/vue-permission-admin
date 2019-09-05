@@ -31,6 +31,7 @@ let role = {
 
   update:async (ctx,next) =>{
     let {body:param,body:{_id}} = ctx.request
+    console.log(_id)
     let upRole = await  Role.findOneAndUpdate({_id},param)
     console.log(upRole)
     if (upRole){
@@ -49,7 +50,7 @@ let role = {
   remove:async (ctx,next) =>{
     let {body:param,body:{_id}} = ctx.request
     let result = await  Role.deleteOne({_id})
-    console.log(nuser)
+
     if (result.deletedCount===1){
       ctx.body = {
         code:0,
