@@ -1,69 +1,141 @@
+import request from '@/utils/request'
 
-import user from '@/json/user.json'
-import button from '@/json/button.json'
-import permission from '@/json/permission.json'
-import role from '@/json/role.json'
-
-export async function getUserList(data) {
-  return user.userList
+export function getUserList(data) {
+  return request({
+    url: `/user/list`,
+    method: 'post',
+    data
+  })
 }
 
-export async function addUser(data) {
-  return { code: 0 }
+export function addUser(data) {
+  return request({
+    url: `/user/add`,
+    method: 'post',
+    data
+  })
 }
 
-export async function updateUser(data) {
-  return { code: 0 }
+export function updateUser(data) {
+  return request({
+    url: `/user/update`,
+    method: 'post',
+    data
+  })
 }
 
-export async function removeUser(data) {
-  return { code: 0 }
+export function removeUser(data) {
+  return request({
+    url: `/user/remove`,
+    method: 'post',
+    data
+  })
 }
 
-export async function getRole(data) {
-  return role
+/**
+ * 角色管理
+ * **/
+
+export function getRole(data) {
+  return request({
+    url: `/role/list`,
+    method: 'post',
+    data
+  })
 }
 
-export async function addRole(data) {
-  return { code: 0 }
+export function addRole(data) {
+  return request({
+    url: `/role/add`,
+    method: 'post',
+    data
+  })
 }
 
-export async function updateRole(data) {
-  return { code: 0 }
+export function updateRole(data) {
+  return request({
+    url: `/role/update`,
+    method: 'post',
+    data
+  })
 }
 
-export async function removeRole(data) {
-  return { code: 0 }
+export function removeRole(data) {
+  return request({
+    url: `/role/remove`,
+    method: 'post',
+    data
+  })
 }
 
-export async function getPermission(data) {
-  return permission
+/**
+ * 权限管理
+ * **/
+
+export function getPermission(data) {
+  return request({
+    url: `/permission/list`,
+    method: 'post',
+    data
+  })
 }
 
-export async function addPermission(data) {
-  return { code: 0 }
+export function addPermission(data) {
+  return request({
+    url: `/permission/add`,
+    method: 'post',
+    data
+  })
 }
 
-export async function updatePermission(data) {
-  return { code: 0 }
+export function updatePermission(data) {
+  return request({
+    url: `/permission/update`,
+    method: 'post',
+    data
+  })
 }
 
-export async function removePermission(data) {
-  return { code: 0 }
+export function removePermission(data) {
+  return request({
+    url: `/permission/remove`,
+    method: 'post',
+    data
+  })
 }
 
-export async function getButton(data) {
-  return button
+/**
+ * 按钮配置
+ * **/
+
+export function getButton(data) {
+  return request({
+    url: `/button/list`,
+    method: 'post',
+    data
+  })
 }
 
-export async function addButton(data) {
-  return { code: 0 }
+export function addButton(data) {
+  return request({
+    url: `/button/add`,
+    method: 'post',
+    data
+  })
 }
 
-export async function updateButton(data) {
-  return { code: 0 }
+export function updateButton(data) {
+  return request({
+    url: `/button/update`,
+    method: 'post',
+    data
+  })
 }
 
-export async function removeButton(data) {
-  return { code: 0 }
+export function removeButton(data) {
+  return request({
+    url: `/button/remove`,
+    method: 'post',
+    data
+  })
 }

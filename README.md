@@ -3,9 +3,9 @@
 
 vue-permission-admin 是一个后台前端权限管理解决方案，最大特点是权限控制到按钮级别，权限配置方便简单，非开发人员也可以配置。它使用了最新的前端技术栈，动态路由，权限配置，权限验证，它可以帮助你快速搭建后台权限管理。
 
-在与后端配合的时候，后端可以根据角色所拥有资源下的按钮权限控制接口权限
-
 前端基于: [vue-element-admin](https://panjiachen.github.io/vue-element-admin) 
+
+预览：[Preview](https://zhenglinping.github.io/vue-permission-admin)
 
 服务端: koa2+mongodb
 
@@ -109,6 +109,58 @@ npm run lint
 
 # 代码格式检查并自动修复
 npm run lint -- --fix
+```
+
+## 后端权限控制
+有人疑问怎么与后端配合控制权限，后端怎么控制接口权限，下面是我用js的描述后端控制接口访问权限的思路,参考一下
+
+```bash
+# 用户登录后把用户信息会存到redis里面，同时把premissions数据洗一下，便于查询
+
+ premissions={
+    "user":["query","detail","add","update"],
+    "page2":["query","detail"]
+  }
+
+# 定义两个常量，与后台配置的"权限"与"按钮"的唯一识别码对应起来
+const API_CODE = {
+  "LIST":'query',
+  "ADD":'add',
+  "UPDATE":'update',
+}
+const MENU_CODE = {
+  "USER":'user',
+  "ROLE":'role'
+}
+
+
+# 判断权限
+const hasPrem = function (token,urlCode,APICode) {
+  return loginUser[token].premissions[urlCode].includes(APICode)
+}
+
+# 接口方法,例如：用户管理
+const urlCode=MENU_CODE.USER 
+const user={
+   list:function(){
+    if(hasPrem(token,urlCode,API_CODE.LIST)){
+        return data
+    }else{
+        return new Error("没有查询权限")
+    }
+  },
+  add:function(){
+    if(hasPrem(token,urlCode,API_CODE.ADD)){
+       return data
+    }else{
+       return new Error("没有新增权限")
+    }
+  }
+  
+}
+
+
+
 ```
 
 

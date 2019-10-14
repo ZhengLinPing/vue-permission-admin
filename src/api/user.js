@@ -1,12 +1,24 @@
+import request from '@/utils/request'
 
-import user from '@/json/user.json'
-
-export async function login(data) {
-  console.log(user.login)
-  return user.login
+export function login(data) {
+  return request({
+    url: '/user/login',
+    method: 'post',
+    data
+  })
 }
 
-export async function getInfo(token) {
-  return user.userInfo
+export function getInfo(token) {
+  return request({
+    url: '/user/info',
+    method: 'post',
+    params: { token }
+  })
 }
 
+export function logout() {
+  return request({
+    url: '/user/logout',
+    method: 'post'
+  })
+}
