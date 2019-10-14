@@ -69,8 +69,8 @@ npm run dev
 
 # 导入数据
 
-先把项目根目录的dbs中的数据导入数据库
-在mongodb安装目录的bin目录执行
+先把项目根目录的dbs中的数据导入数据库,在mongodb安装目录的bin目录执行
+
 mongorestore -d koa <path>
 
 # 进入后端服务目录
