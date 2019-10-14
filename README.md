@@ -143,20 +143,20 @@ const hasPrem = function (token,urlCode,APICode) {
 # 接口方法,例如：用户管理
 const urlCode=MENU_CODE.USER 
 const user={
-   list:function(){
-    if(hasPrem(token,urlCode,API_CODE.LIST)){
-        return data
-    }else{
-        return new Error("没有查询权限")
+    list:function(){
+        if(hasPrem(token,urlCode,API_CODE.LIST)){
+            return data
+        }else{
+            return new Error("没有查询权限")
+        }
+    },
+    add:function(){
+        if(hasPrem(token,urlCode,API_CODE.ADD)){
+            return data
+        }else{
+            return new Error("没有新增权限")
+        }
     }
-  },
-  add:function(){
-    if(hasPrem(token,urlCode,API_CODE.ADD)){
-       return data
-    }else{
-       return new Error("没有新增权限")
-    }
-  }
   
 }
 
