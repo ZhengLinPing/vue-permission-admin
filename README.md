@@ -112,4 +112,4 @@ npm run lint -- --fix
 ```
 
 
-Copyright (c) 2019 长城科技
+Copyright (c) 2019 长城联合

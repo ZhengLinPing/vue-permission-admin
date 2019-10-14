@@ -23,7 +23,7 @@
 
       <el-table-column label="按钮名称" width="200px" align="center">
         <template slot-scope="scope">
-          <el-button size="medium" type="primary"> {{ scope.row.name }}</el-button>
+          <el-button size="mini" type="primary"> {{ scope.row.name }}</el-button>
         </template>
       </el-table-column>
 
