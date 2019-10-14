@@ -3,9 +3,9 @@
 
 vue-permission-admin 是一个后台前端权限管理解决方案，最大特点是权限控制到按钮级别，权限配置方便简单，非开发人员也可以配置。它使用了最新的前端技术栈，动态路由，权限配置，权限验证，它可以帮助你快速搭建后台权限管理。
 
-前端基于: [vue-element-admin](https://panjiachen.github.io/vue-element-admin) 
+前端基于: [vue-element-admin](https://panjiachen.github.io/vue-element-admin) {:target="_blank"}
 
-预览：[Preview](https://zhenglinping.github.io/vue-permission-admin)
+预览：[Preview](https://zhenglinping.github.io/vue-permission-admin){:target="_blank"}
 
 服务端: koa2+mongodb
 
