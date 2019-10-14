@@ -115,7 +115,8 @@ npm run lint -- --fix
 有人疑问怎么与后端配合控制权限，后端怎么控制接口权限，下面是我用js的描述后端控制接口访问权限的思路,参考一下
 
 ```bash
-# 用户登录后把用户信息会存到redis里面，同时把premissions数据洗一下，便于查询
+
+# 用户登录后把用户信息会存到redis，同时把premissions数据洗一下，便于查询
 
  premissions={
     "user":["query","detail","add","update"],
@@ -126,7 +127,7 @@ npm run lint -- --fix
 const API_CODE = {
   "LIST":'query',
   "ADD":'add',
-  "UPDATE":'update',
+  "UPDATE":'update'
 }
 const MENU_CODE = {
   "USER":'user',
