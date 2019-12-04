@@ -147,14 +147,14 @@ const user={
         if(hasPrem(token,urlCode,API_CODE.LIST)){
             return data
         }else{
-            return new Error("没有查询权限")
+            return "没有查询权限"
         }
     },
     add:function(){
         if(hasPrem(token,urlCode,API_CODE.ADD)){
             return data
         }else{
-            return new Error("没有新增权限")
+            return "没有新增权限"
         }
     }
   
@@ -165,4 +165,4 @@ const user={
 ```
 
 
-Copyright (c) 2019 长城联合
+
